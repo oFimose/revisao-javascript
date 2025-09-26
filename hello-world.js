@@ -34,3 +34,39 @@ where Nome = 'Maria Souza'
 
 select *
 from cliente
+
+--------
+
+create table funcionarios (
+Id int primary key identity (1,1),
+Nome nvarchar(100) not null,
+Cargo nvarchar(50),
+Salario decimal(10,2) not null,
+DataAdmissao date not null
+);
+
+insert into funcionarios (Nome, Cargo, Salario, DataAdmissao)
+values
+('João Cabeça', 'sem serventia', 1200.00, '2025-02-03'),
+('Maria Pipoca', 'serva', 0, '2025-01-16'),
+('Dante infernu', 'matad. de onça', 2000.00, '2024-07-23');
+
+update funcionarios
+set Salario = '3100.00'
+where Id = 1
+
+update funcionarios
+set Salario = '4500.00'
+where Id = 5
+
+select * from funcionarios
+
+select * from funcionarios 
+where Salario > 3000.00;
+
+update funcionarios
+set Cargo = 'Gerente'
+where Id = 5
+
+delete from funcionarios
+where id = 2;
