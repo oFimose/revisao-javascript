@@ -110,3 +110,41 @@ where LOWER(Observacao) like 'sou doente, mas n importa'
 select top 2 *
 from pedido 
 order by ValorTotal desc;
+
+--------
+
+CREATE TABLE Cliente (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    Nome NVARCHAR(100) NOT NULL,
+    Email NVARCHAR(100) UNIQUE,           --- unique, n deixa ter algo duplicado
+    Genero NVARCHAR(1) NOT NULL,
+    DataNascimento DATE NOT NULL
+);
+
+--- muda o nome da coluna com o AS
+select nome as nomeCliente, email as emailCliente 
+from Cliente
+
+INSERT INTO Cliente (Nome, Email, Genero, DataNascimento)
+VALUES ('João Silva', 'joao@email.com', 'M', '1990-05-12');
+
+INSERT INTO Cliente (Nome, Genero, DataNascimento)
+VALUES ('Maria Souza', 'F', '1988-09-23');
+
+select * from Cliente
+
+--- Contar numeros de registros
+select COUNT (*) as totalClientes
+from Cliente;
+
+--- contar numero de registros de email
+select COUNT (Email) as totalClientes
+from Cliente
+
+select * from pedido
+
+--- seleciona o maior e o menor valor da coluna valorTotal;
+select 
+MAX(valorTotal) as maiorValorDosPedidos,
+MIN(valorTotal) as menorValorDosPedidos
+from pedido
