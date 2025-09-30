@@ -148,3 +148,22 @@ select
 MAX(valorTotal) as maiorValorDosPedidos,
 MIN(valorTotal) as menorValorDosPedidos
 from pedido
+
+
+---- 
+
+
+--- usamos AVG para ver a media de tal coluna;
+select AVG(ValorTotal) as mediaValorTotal 
+from pedido;
+
+--- media salarial dos funcionarios
+select avg(salario) as mediaSalarial
+from funcionarios;
+
+--- soma o valorTotal dos pedidos
+select sum(valorTotal)
+from pedido;
+
+select sum(salario)
+from funcionarios;
