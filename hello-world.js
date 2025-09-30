@@ -149,9 +149,7 @@ MAX(valorTotal) as maiorValorDosPedidos,
 MIN(valorTotal) as menorValorDosPedidos
 from pedido
 
-
 ---- 
-
 
 --- usamos AVG para ver a media de tal coluna;
 select AVG(ValorTotal) as mediaValorTotal 
@@ -167,3 +165,22 @@ from pedido;
 
 select sum(salario)
 from funcionarios;
+
+-----
+
+CREATE TABLE Pedidos (
+    Id INT PRIMARY KEY IDENTITY(1,1),
+    ClienteId INT NOT NULL,
+    DataPedido DATETIME NOT NULL DEFAULT GETDATE(),
+    ValorTotal DECIMAL(10,2) NOT NULL,
+    Status NVARCHAR(20) NOT NULL DEFAULT 'Pendente',
+    FormaPagamento NVARCHAR(30) NULL,
+    Observacao NVARCHAR(200) NULL,
+    FOREIGN KEY (ClienteId) REFERENCES Cliente(Id)
+);
+
+--- inner join usado para relacionar as tabelas pedido e cliente, através do id do cliente
+select * from pedidos p 
+inner join Cliente c
+on c.id = p.ClienteId
+
